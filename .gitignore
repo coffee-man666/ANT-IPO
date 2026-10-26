@@ -1,0 +1,5 @@
+# 知乎发布产物
+.zhihu-publish-output/
+
+# macOS
+.DS_Store

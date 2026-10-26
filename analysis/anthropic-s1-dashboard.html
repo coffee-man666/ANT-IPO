@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anthropic, PBC · Form S-1 数据看板（2026-10-26 申报）</title>
+<style>
+  :root{
+    --ink:#221f1b; --paper:#f6f3ee; --card:#ffffff; --line:#e6dfd3; --mut:#7c756b;
+    --acc:#b4532a; --acc2:#31567d; --neg:#9d3b32; --pos:#2f7a5c; --soft:#f1eae0; --gold:#8a6d3b;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper); color:var(--ink); font:14px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;}
+  a{color:var(--acc); text-decoration:none;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 20px;}
+  /* ---------- header ---------- */
+  header{background:#1d1915; color:#f4efe8; padding:52px 0 40px;}
+  header .kicker{font-size:12px; letter-spacing:.35em; color:#c9a06d; text-transform:uppercase; margin-bottom:14px;}
+  header h1{font-family:Georgia,"Times New Roman","Songti SC","STSong",serif; font-size:34px; line-height:1.3; font-weight:700; letter-spacing:.01em;}
+  header .sub{margin-top:12px; color:#cfc6ba; font-size:14px; max-width:760px;}
+  .chips{margin-top:22px; display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{border:1px solid #4a423a; border-radius:999px; padding:4px 14px; font-size:12.5px; color:#e8e0d4;}
+  .chip b{color:#f4efe8; font-weight:600;}
+  /* ---------- nav ---------- */
+  nav{position:sticky; top:0; z-index:50; background:rgba(246,243,238,.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; gap:2px; overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  nav a{flex:0 0 auto; padding:12px 13px; font-size:13px; color:var(--mut); border-bottom:2px solid transparent; white-space:nowrap;}
+  nav a:hover{color:var(--ink);}
+  nav a.on{color:var(--acc); border-bottom-color:var(--acc); font-weight:600;}
+  /* ---------- sections ---------- */
+  section{padding:44px 0 10px; scroll-margin-top:56px;}
+  .sn{font-family:Georgia,serif; font-size:13px; color:var(--acc); letter-spacing:.25em;}
+  h2{font-family:Georgia,"Times New Roman","Songti SC","STSong",serif; font-size:25px; margin:6px 0 6px; font-weight:700;}
+  .lede{color:var(--mut); font-size:13.5px; margin-bottom:20px; max-width:860px;}
+  h3{font-size:15.5px; margin:26px 0 10px; font-weight:700; color:#3a352e;}
+  h3 .en{font-weight:400; color:var(--mut); font-size:12.5px; margin-left:6px;}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px 20px;}
+  .grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:16px;}
+  .grid3{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px;}
+  ul.dots{list-style:none;}
+  ul.dots li{padding-left:16px; position:relative; margin-bottom:7px; font-size:13.5px;}
+  ul.dots li::before{content:""; position:absolute; left:0; top:.72em; width:6px; height:6px; border-radius:50%; background:var(--acc); opacity:.75;}
+  .note{font-size:12px; color:var(--mut); margin-top:10px; line-height:1.65;}
+  .q{border-left:3px solid var(--acc); background:var(--soft); padding:10px 14px; border-radius:0 8px 8px 0; font-size:13px; color:#4c463e; margin:10px 0;}
+  .q .who{display:block; font-size:11.5px; color:var(--mut); margin-top:4px;}
+  /* ---------- KPI ---------- */
+  .kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(235px,1fr)); gap:14px;}
+  .kpi{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px 13px; position:relative; overflow:hidden;}
+  .kpi::after{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--acc); opacity:.85;}
+  .kpi.blue::after{background:var(--acc2);}
+  .kpi.green::after{background:var(--pos);}
+  .kpi.red::after{background:var(--neg);}
+  .kpi .k{font-size:12px; color:var(--mut);}
+  .kpi .v{font-family:Georgia,"Songti SC",serif; font-size:27px; font-weight:700; line-height:1.25; margin:3px 0 2px; letter-spacing:-.01em;}
+  .kpi .v small{font-size:14px; font-weight:400; color:var(--mut);}
+  .kpi .s{font-size:11.5px; color:var(--mut); line-height:1.55;}
+  /* ---------- charts ---------- */
+  .ccard{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px 12px; min-width:0;}
+  .ct{font-size:14px; font-weight:700; margin-bottom:2px;}
+  .cu{font-size:11.5px; color:var(--mut); margin-bottom:8px;}
+  svg.chart{width:100%; height:auto; display:block;}
+  .legend{display:flex; flex-wrap:wrap; gap:14px; font-size:12px; color:#57504a; margin:2px 0 6px;}
+  .legend i{display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:5px; vertical-align:-1px;}
+  /* ---------- hbar (HTML bars) ---------- */
+  .hrow{display:grid; grid-template-columns:minmax(110px,230px) 1fr minmax(66px,auto); align-items:center; gap:10px; margin-bottom:8px;}
+  .hlab{font-size:12.5px; line-height:1.35; color:#3d3830;}
+  .hlab small{display:block; color:var(--mut); font-size:11px;}
+  .htrack{background:var(--soft); border-radius:4px; height:15px; overflow:hidden;}
+  .hfill{height:100%; border-radius:4px; background:var(--acc); min-width:2px;}
+  .hval{font-size:12.5px; font-variant-numeric:tabular-nums; text-align:right; white-space:nowrap;}
+  .hval small{color:var(--mut); font-size:11px;}
+  /* ---------- table ---------- */
+  .tw{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  table{width:100%; border-collapse:collapse; font-size:12.8px; background:var(--card);}
+  th,td{padding:8px 10px; border-bottom:1px solid #efe9de; text-align:left; vertical-align:top; line-height:1.5;}
+  th{background:var(--soft); font-weight:700; white-space:nowrap;}
+  td.n,th.n{text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap;}
+  tr.sum td{font-weight:700; background:#fbf8f3;}
+  /* ---------- misc components ---------- */
+  .pillrow{display:flex; flex-wrap:wrap; gap:8px; margin:8px 0;}
+  .pill{background:var(--soft); border:1px solid var(--line); border-radius:8px; padding:7px 12px; font-size:12.5px;}
+  .pill b{display:block; font-size:13.5px;}
+  .votebar{display:flex; height:46px; border-radius:8px; overflow:hidden; font-size:12.5px; color:#fff; margin:10px 0 4px;}
+  .votebar div{display:flex; align-items:center; justify-content:center; flex-direction:column; line-height:1.3;}
+  .votebar .f{background:#1d1915; width:50.1%;}
+  .votebar .a{background:var(--acc); width:49.9%;}
+  .seats{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-top:10px;}
+  .seat{border-radius:8px; padding:10px 12px; font-size:12.5px; border:1px solid var(--line);}
+  .seat b{display:block; font-size:13px;}
+  .seat.t{background:#eee7db; border-color:#d8cdba;}
+  .seat.af{background:#f9efea; border-color:#e6cdbf;}
+  .lane{border:1px dashed #d8cfbf; border-radius:10px; padding:12px 14px; margin-bottom:12px; background:#fbf9f5;}
+  .lane h4{font-size:13px; margin-bottom:8px;}
+  .lane .flow{display:flex; flex-wrap:wrap; align-items:stretch; gap:6px;}
+  .step{background:#fff; border:1px solid var(--line); border-radius:8px; padding:7px 10px; font-size:11.8px; line-height:1.45; flex:1 1 150px; min-width:140px;}
+  .step b{display:block; color:var(--acc2); font-size:11px; letter-spacing:.05em;}
+  .arrow{align-self:center; color:var(--mut); font-size:15px; flex:0 0 auto;}
+  .risk{background:var(--card); border:1px solid var(--line); border-left:4px solid var(--neg); border-radius:8px; padding:14px 16px;}
+  .risk h4{font-size:14px; margin-bottom:6px;}
+  .risk h4 span{color:var(--mut); font-weight:400; font-size:12px; margin-left:6px;}
+  .risk li{font-size:12.8px; margin-bottom:5px;}
+  .tag{display:inline-block; font-size:11px; border:1px solid var(--line); border-radius:4px; padding:0 6px; color:var(--mut); margin-left:6px; vertical-align:1px;}
+  footer{margin-top:56px; background:#1d1915; color:#b9b0a3; padding:36px 0 44px; font-size:12.5px; line-height:1.8;}
+  footer b{color:#e8e0d4;}
+  #tip{position:fixed; z-index:99; display:none; background:#221f1b; color:#fff; font-size:12px; padding:6px 10px; border-radius:6px; pointer-events:none; max-width:260px; line-height:1.5;}
+  @media (max-width:640px){
+    header h1{font-size:25px;}
+    h2{font-size:20px;}
+    .kpi .v{font-size:22px;}
+    .hrow{grid-template-columns:minmax(96px,140px) 1fr minmax(58px,auto); gap:7px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="kicker">IPO · Form S-1 数据看板</div>
+    <h1>Anthropic, PBC<br>首次公开发行招股书速览</h1>
+    <p class="sub">使命："负责任地开发与维护先进 AI，造福人类的长远利益"（the responsible development and maintenance of advanced AI for the long-term benefit of humanity）。本看板为申报文件的事实性摘要，全部数字取自 Form S-1 及其财务报表附注。</p>
+    <div class="chips">
+      <span class="chip">申报日 <b>2026-10-26</b></span>
+      <span class="chip">拟上市 <b>Nasdaq Global Select · 代码 "ANT"</b></span>
+      <span class="chip">注册地 <b>特拉华州公益公司（PBC）</b></span>
+      <span class="chip">发行证券 <b>A 类普通股（Class A）</b></span>
+      <span class="chip">状态 <b>初步申报稿（发行规模未定价）</b></span>
+    </div>
+  </div>
+</header>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="#s1" class="on">概览与 IPO</a>
+    <a href="#s2">关键指标</a>
+    <a href="#s3">财务表现</a>
+    <a href="#s4">业务与产品</a>
+    <a href="#s5">股权与投票权</a>
+    <a href="#s6">融资历程</a>
+    <a href="#s7">承诺与义务</a>
+    <a href="#s8">风险摘要</a>
+    <a href="#s9">承销与限售</a>
+    <a href="#s10">治理结构</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ============ 1 概览与 IPO ============ -->
+<section id="s1">
+  <div class="sn">01</div>
+  <h2>公司概览与 IPO 要点</h2>
+  <p class="lede">Anthropic 于 2021 年 1 月注册为特拉华州公益公司（PBC），定位"首先是一个研究实验室"；2023 年一季度公开发布首个商业产品 Claude，收入自 0 起步。公司通过模型、平台与应用三层交付 Claude 智能服务。</p>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0;">公司快照</h3>
+      <ul class="dots">
+        <li>总部：加州旧金山（548 Market Street）；截至 2026-09-30 全球员工约 <b>5,300 人</b>（2024-12-31 约 940 人），多数在研究、工程与产品职能。</li>
+        <li>七位联合创始人（Dario Amodei、Daniela Amodei、Tom Brown、Jack Clark、Jared Kaplan、Sam McCandlish、Christopher Olah）全部仍在任。</li>
+        <li>截至 2026-09-30：<b>Fortune 10 全部 10 家</b>、<b>Fortune 500 超过 50%</b>、<b>Global 2000 超过 30%</b> 为 TTM 收入 ≥10 万美元客户。</li>
+        <li>算力：跨 AWS Trainium、Google TPU、NVIDIA GPU、AMD GPU 四大芯片家族的多芯片架构，按价格/性能编排负载；首个自建数据中心设施已于 2026 年投运（Anthropic Direct）。</li>
+        <li>审计机构：Grant Thornton（FY2023–2024）→ Ernst &amp; Young（FY2025 起，2025-10-30 聘任）。</li>
+        <li>过户代理：Computershare Trust Company, N.A.。</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">本次发行（The Offering）</h3>
+      <ul class="dots">
+        <li>公司发行 <b>____ 股</b> Class A；售股股东另售 <b>____ 股</b>（公司不获售股所得）；绿鞋 <b>____ 股</b>（30 天内行使）。<span class="tag">初步稿空白</span></li>
+        <li>发行后已确定的类別股数：<b>Class T 1 股</b>（LTBT 持有）、<b>Class F 1 股</b>（Founder LLC 持有）、<b>Class E 0 股</b>。</li>
+        <li>2026-09-17 拆股：Class A / Class N <b>1 拆 10</b> 远期拆股；Class T <b>1,000 并 1</b> 反向拆股；全书追溯调整。</li>
+        <li>Nasdaq 定义下的<b>受控公司</b>（LTBT 持 Class T 选举董事会多数）；仅提名与治理委员会（NGC）依赖豁免。</li>
+        <li>境外公开发售：澳大利亚、加拿大、EEA 部分成员国、日本、瑞士、英国（不在当地上市）。</li>
+        <li>募资用途：一般公司用途——营运资金、经营费用、资本开支（含算力与基础设施）、人才招聘保留；或用于收购/投资（暂无重大协议）；部分用于 RSU 结算预扣税。</li>
+      </ul>
+      <p class="note">⚠ 本 S-1 为初步申报稿：发行股数、价格区间（$____–$____）、募资净额、承销折扣、绿鞋股数在原文中均为空白占位，本看板一律不填列、不作估计。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 关键指标 ============ -->
+<section id="s2">
+  <div class="sn">02</div>
+  <h2>关键指标卡</h2>
+  <p class="lede">单位与口径见各卡片脚注；"6M"指截至 6 月 30 日的六个月（未经审计中期数据），"TTM"指截至 2026-09-30 的过去十二个月。</p>
+  <div class="kpis">
+    <div class="kpi"><div class="k">收入 · 6M 2026（未经审计）</div><div class="v">16,286 <small>百万美元</small></div><div class="s">同比 +1,300%（6M 2025：$1,163M）；FY2025 全年 $4,585M（+1,088%）</div></div>
+    <div class="kpi red"><div class="k">净亏损 · 6M 2026（未经审计）</div><div class="v">(80,748) <small>百万美元</small></div><div class="s">其中 $(72,388)M 为可转债/衍生/SAFE 公允价值变动（企业估值上升所致，非现金）</div></div>
+    <div class="kpi green"><div class="k">调整后经营利润率 · 6M 2026（非 GAAP）</div><div class="v">10%<small>（FY2025：-106%）</small></div><div class="s">调整后经营损益 +$1,618M 首次转正；Q2 2026 单季达 19%（+$2,235M）</div></div>
+    <div class="kpi blue"><div class="k">净收入留存率 NRR · 2026-09-30</div><div class="v">≈900%</div><div class="s">合格客户口径；剔除 Claude Pro / Max 固定价格订阅用户</div></div>
+    <div class="kpi"><div class="k">$100K+ TTM 客户数 · 2026-09-30</div><div class="v">&gt;11,900 <small>家</small></div><div class="s">$1M+ &gt;1,900 家；$10M+ 约 250 家；2025-09-30 时 $100K+ 仅 &gt;950 家</div></div>
+    <div class="kpi blue"><div class="k">现金及等价物 + 短期投资 · 2026-06-30</div><div class="v">1,317 <small>亿美元</small></div><div class="s">现金 1,124 亿（$112.4B）＋ 短投 193 亿（$19.3B）；另有限现金 $2.5B</div></div>
+    <div class="kpi"><div class="k">累计募资总额 · 截至 2026-06-30</div><div class="v">1,411 <small>亿美元</small></div><div class="s">优先股、可转换本票与 SAFE 合计（$141.1B）；6M 2026 融资净流入 $110.8B</div></div>
+    <div class="kpi green"><div class="k">TTM 人均创收 · 2026-09-30</div><div class="v">&gt;6.6 <small>百万美元/人</small></div><div class="s">2025-09-30 为 $1.4M；同期 TTM 收入 +约1,200%，员工数 +约170%</div></div>
+  </div>
+</section>
+
+<!-- ============ 3 财务表现 ============ -->
+<section id="s3">
+  <div class="sn">03</div>
+  <h2>财务表现</h2>
+  <p class="lede">FY2023–FY2025 为经审计年度数据；6M 2025 / 6M 2026 与 2026-06-30 资产负债数据为未经审计中期数据。金额单位：百万美元（与招股书报表口径 "in millions" 一致）。</p>
+
+  <div class="grid2">
+    <div class="ccard">
+      <div class="ct">营收与净亏损（年度与中期）</div>
+      <div class="cu">单位：百万美元 · FY 为日历年度；6M 为截至 6-30 的六个月（2026 年未经审计）</div>
+      <div class="legend"><span><i style="background:#b4532a"></i>收入</span><span><i style="background:#9d3b32"></i>净亏损</span></div>
+      <div id="ch-rev"></div>
+      <p class="note">净亏损含可转债、衍生负债与 SAFE 公允价值变动：FY2023 $1.0B → FY2025 $34.3B → 6M 2026 $72.4B，主因企业估值上升（非现金）。</p>
+    </div>
+    <div class="ccard">
+      <div class="ct">经营亏损 vs 调整后经营损益（非 GAAP）</div>
+      <div class="cu">单位：百万美元 · 调整后口径剔除股权激励、非现金慈善捐赠与 Bartz 和解</div>
+      <div class="legend"><span><i style="background:#8a8378"></i>经营亏损（GAAP）</span><span><i style="background:#2f7a5c"></i>调整后经营损益（非 GAAP）</span></div>
+      <div id="ch-aoi"></div>
+      <p class="note">6M 2026 调整后经营损益 +$1,618M / 利润率 10%；调整后净损益 +$2,671M（FY2023–FY2025 分别为 $(457)M / $(2,683)M / $(4,448)M）。</p>
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-top:16px;">
+    <div class="ccard">
+      <div class="ct">季度收入与经营损益</div>
+      <div class="cu">单位：百万美元 · 未经审计季度数据（Q1'25–Q2'26，季度截至各期末）</div>
+      <div class="legend"><span><i style="background:#b4532a"></i>季度收入</span><span><i style="background:#8a8378"></i>季度经营损益</span></div>
+      <div id="ch-q"></div>
+      <p class="note">Q2 2026（截至 2026-06-30 三个月）：收入 $11,555M，<b>经营利润 $974M 首次转正</b>（经营利润率 8%）；同期算力费用同比 +300% vs 收入 +1,368%。</p>
+    </div>
+    <div class="ccard">
+      <div class="ct">算力与基础设施费用占收入比</div>
+      <div class="cu">单位：%（费用 ÷ 当期收入） · 代替"毛利率"口径，见下方说明</div>
+      <div id="ch-cpct"></div>
+      <p class="note"><b>关于"毛利率"：</b>招股书未披露毛利——自 FY2025 起经营费用改按<b>性质法</b>列报（附注 1），利润表无"收入成本/毛利"行项，前期已重列。故本看板以"算力与基础设施费用占收入比"作为最接近的替代口径（FY2023–6M 2026 分别为 $433M/$2,522M/$7,326M/$2,334M/$8,945M）。</p>
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-top:16px;">
+    <div class="ccard">
+      <div class="ct">收入结构：消费型 vs 订阅型</div>
+      <div class="cu">单位：百万美元 · 消费型按 token 计量；订阅期一般 ≤12 个月 · FY2023 收入"基本全部为消费型"（$41M）</div>
+      <div class="legend"><span><i style="background:#b4532a"></i>消费型（consumption）</span><span><i style="background:#31567d"></i>订阅型（subscription）</span></div>
+      <div id="ch-mix"></div>
+      <p class="note">6M 2026：消费型 $13,064M（80%）＋ 订阅型 $3,222M（20%）；预计消费型未来仍占绝大部分。越来越多企业签不可撤销年度/多年合同并附最低消费承诺。</p>
+    </div>
+    <div class="ccard">
+      <div class="ct">收入地域结构（按客户账单地址）</div>
+      <div class="cu">单位：百万美元 · 附注 2 地域拆分</div>
+      <div class="legend"><span><i style="background:#31567d"></i>美国</span><span><i style="background:#d08b4f"></i>国际</span></div>
+      <div id="ch-geo"></div>
+      <p class="note">6M 2026 国际收入 $4,523M，占比约 28%（由附注数据计算）；长期资产 95% 位于美国（2026-06-30）。</p>
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-top:16px;">
+    <div class="ccard">
+      <div class="ct">现金、短期投资与流动性</div>
+      <div class="cu">单位：百万美元 · 资产负债表日余额（2026-06-30 未经审计）</div>
+      <div class="legend"><span><i style="background:#31567d"></i>现金及现金等价物</span><span><i style="background:#7fa3c4"></i>短期投资</span></div>
+      <div id="ch-cash"></div>
+      <p class="note">2026-06-30 另有受限现金 $2,529M 与循环信贷可用额度（2026-09 经 A&amp;R 协议扩容至 $15B；此前额度 MD&amp;A 口径为 $3.25B，附注 9 口径记为 $3.3B——底稿两种表述并存，系四舍五入差异；截至 2026-06-30 未提取）。公司声明现有资源足以支撑未来至少 12 个月。</p>
+    </div>
+    <div class="ccard">
+      <div class="ct">现金流概览</div>
+      <div class="cu">单位：百万美元 · 经营 / 投资 / 筹资活动净额</div>
+      <div class="tw" style="margin-top:6px;">
+        <table>
+          <thead><tr><th>期间</th><th class="n">经营</th><th class="n">投资</th><th class="n">筹资</th></tr></thead>
+          <tbody>
+            <tr><td>FY2023</td><td class="n">(1,627)</td><td class="n">(2)</td><td class="n">2,320</td></tr>
+            <tr><td>FY2024</td><td class="n">(5,692)</td><td class="n">(22)</td><td class="n">7,248</td></tr>
+            <tr><td>FY2025</td><td class="n">(2,637)</td><td class="n">(3,077)</td><td class="n">19,960</td></tr>
+            <tr><td>6M 2025</td><td class="n">(1,513)</td><td class="n">(49)</td><td class="n">4,749</td></tr>
+            <tr><td>6M 2026（未审计）</td><td class="n"><b>3,929</b></td><td class="n">(17,181)</td><td class="n">110,774</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">6M 2026 经营现金流首次转正（+$3.9B）；筹资净流入 $110.8B 主因可赎回可转换优先股发行净额 $110.4B（Series G/H）；投资流出主因购买短期投资与服务器/基础设施资本开支。</p>
+    </div>
+  </div>
+
+  <h3>合并资产负债表与利润表要点（2026-06-30，未经审计）</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>项目</th><th class="n">金额（百万美元）</th><th>口径说明</th></tr></thead>
+      <tbody>
+        <tr><td>现金、现金等价物及短期投资</td><td class="n">131,651</td><td>现金 $112,389M ＋ 短期投资 $19,262M</td></tr>
+        <tr><td>营运资本</td><td class="n">130,760</td><td>流动资产 − 流动负债</td></tr>
+        <tr><td>总资产</td><td class="n">147,358</td><td>2025-12-31 为 $24,661M；2024-12-31 为 $7,752M</td></tr>
+        <tr><td>应付可转换票据（公允价值）</td><td class="n">108,566</td><td>含 Amazon Notes；本金余额合计 $6,203M（见 §5/§7）</td></tr>
+        <tr><td>总负债</td><td class="n">117,467</td><td>—</td></tr>
+        <tr><td>可赎回可转换优先股（账面）</td><td class="n">157,510</td><td>清算优先权合计 $136,286M；IPO 前全部转换为 Class A / Class N</td></tr>
+        <tr><td>累计亏损</td><td class="n">(132,902)</td><td>其中约 $113.2B 与 2023 年以来估值上升驱动的公允价值变动相关</td></tr>
+        <tr class="sum"><td>股东赤字合计</td><td class="n">(127,619)</td><td>额外实缴资本 $5,336M</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">每股数据：基本及摊薄每股净亏损 FY2023 $(1.42) / FY2024 $(5.43) / FY2025 $(23.04) / 6M 2026 $(39.88)；加权平均股数 6M 2026 为 2,024,972,990 股（已按 1 拆 10 追溯调整）。公司预计可预见未来不派息。</p>
+</section>
+
+<!-- ============ 4 业务与产品 ============ -->
+<section id="s4">
+  <div class="sn">04</div>
+  <h2>业务与产品</h2>
+  <p class="lede">"我们在三层堆栈上构建：模型本身、构建于模型之上的平台、把 Claude 直接交到用户手中的应用。" 收入模式以按 token 计量的消费型（pay-for-intelligence）为主。</p>
+
+  <h3>客户采用与集中度</h3>
+  <div class="grid2">
+    <div class="ccard">
+      <div class="ct">TTM 收入阈值客户数（2026-09-30）</div>
+      <div class="cu">单位：家 · TTM 收入口径；公司不单独定义"企业客户"，以 $100K+ 度量企业采用</div>
+      <div id="ch-cust"></div>
+      <p class="note">$100K+ 客户数轨迹：约 20（2023-12-31）→ 约 200（2024-12-31）→ 约 1,500（2025-12-31）→ &gt;11,900（2026-09-30）。另有约 4,000 万家 TTM 收入 &lt;$100K 的长尾客户。</p>
+    </div>
+    <div class="ccard">
+      <div class="ct">CSP 云市场渠道占比</div>
+      <div class="cu">上：CSP 市场收入占总收入 %；下：CSP 市场应收账款净额占总应收 %</div>
+      <div class="hrow"><div class="hlab">2023 收入占比</div><div class="htrack"><div class="hfill" style="width:23%; background:#31567d;"></div></div><div class="hval">≈11%</div></div>
+      <div class="hrow"><div class="hlab">2024 收入占比</div><div class="htrack"><div class="hfill" style="width:67%; background:#31567d;"></div></div><div class="hval">≈32%</div></div>
+      <div class="hrow"><div class="hlab">2025 收入占比</div><div class="htrack"><div class="hfill" style="width:98%; background:#31567d;"></div></div><div class="hval">≈47%</div></div>
+      <div class="hrow"><div class="hlab">6M 2026 收入占比</div><div class="htrack"><div class="hfill" style="width:100%; background:#31567d;"></div></div><div class="hval">≈48%</div></div>
+      <div class="hrow"><div class="hlab">2024-12-31 应收占比</div><div class="htrack"><div class="hfill" style="width:70%; background:#d08b4f;"></div></div><div class="hval">42%</div></div>
+      <div class="hrow"><div class="hlab">2025-12-31 应收占比</div><div class="htrack"><div class="hfill" style="width:100%; background:#d08b4f;"></div></div><div class="hval">60%</div></div>
+      <div class="hrow"><div class="hlab">2026-06-30 应收占比</div><div class="htrack"><div class="hfill" style="width:97%; background:#d08b4f;"></div></div><div class="hval">58%</div></div>
+      <p class="note">Claude 经 Amazon Bedrock、Gemini Enterprise Agent Platform、Microsoft Foundry 分发；公司与客户直接签约并向各 CSP 支付费用（收入按总额法确认，公司为委托人）。</p>
+    </div>
+  </div>
+  <div class="q">客户集中度（更正后口径）：截至 2026-09-30 的九个月，<b>前五大客户合计约占收入 25%</b>，同期<b>无任何单一客户占收入超过 10%</b>；截至 2026-09-30 的三个月，约 79% 收入来自前五大客户以外的客户（2026-03-31 三个月约 64%）。
+    <span class="who">来源：招股书 MD&A · 客户集中度（底稿 L3734-3736 / L8571-8575）</span></div>
+
+  <h3>产品矩阵</h3>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0;">Claude 模型家族 · 四个等级</h3>
+      <div class="pillrow">
+        <div class="pill"><b>Mythos（含 Fable）</b>最强等级；敏感能力先进，Fable 一般可用（带生产级防护），Mythos 经 Project Glasswing 等受信访问计划提供</div>
+        <div class="pill"><b>Opus</b>推理密集任务主力；最新 Claude Opus 5.5（2026-09）定位企业 daily driver</div>
+        <div class="pill"><b>Sonnet</b>日常多用途，平衡性能/成本/速度</div>
+        <div class="pill"><b>Haiku</b>最低成本、最快，面向高并发负载</div>
+      </div>
+      <p class="note">2026 年 4–9 月发布的模型版本贡献了 2026-09-30 止三个月收入的超过 80%；2026-09-30 止九个月共发布 250 个新模型版本、平台功能与应用。</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">第一方应用与垂直方案</h3>
+      <ul class="dots">
+        <li>应用：Claude Code（2025-02 研究预览）、Claude Cowork（2026-01；2026-09 起与 Claude.ai 合并）、Claude.ai、Claude Security（公测）、Claude Design、Claude Science（查询 60+ 科学数据库）、Claude Tag。</li>
+        <li>七个垂直方案：金融服务、财务顾问、医疗健康、生命科学、法律、教育（K-12 教师免费 premium）、政府（FedRAMP High 授权）。</li>
+        <li>平台能力：Extended/Adaptive Thinking、Tool Use、Long Context、MCP（2024-11 推出、2025-12 捐给 Linux 基金会）、Agent Skills、Prompt Caching（长提示降本约 97%、降延迟约 60%）、Batch、Agent SDK / Claude Managed Agents。</li>
+        <li>生态：SI（Accenture、Deloitte、KPMG、PwC）、数据平台（Salesforce、Snowflake）、Ode with Anthropic（联办 AI 服务公司，面向中型企业）；Claude Partner Network 初始投入 1 亿美元，认证从业者超 15 万、组织超 4,000 家。</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>运营与算力效率</h3>
+  <div class="grid3">
+    <div class="kpi green"><div class="k">收入增速 vs 算力成本增速 · Q2 2026 同比</div><div class="v">1,368% <small>vs 300%</small></div><div class="s">算力与基础设施费用为最大经营费用科目；成本基数提前锁定、不随期内需求波动</div></div>
+    <div class="kpi"><div class="k">代码库贡献由 Claude 编写 · 2026-09</div><div class="v">&gt;90%</div><div class="s">工程师人均日代码量 &gt;45× 2024 财年日均；内部使用价值（按牌价）1→9 月增长超 250 倍</div></div>
+    <div class="kpi blue"><div class="k">单位成本下降 · 2026-09 新模型</div><div class="v">-25% <small>～ -45%</small></div><div class="s">Fable 5.1 典型负载 -25%（复杂/agentic 任务最高 -45%）；Opus 5.5 每任务成本较 Opus 5 约 -40%</div></div>
+    <div class="kpi"><div class="k">剩余履约义务 RPO · 2026-06-30</div><div class="v">108 <small>亿美元</small></div><div class="s">$10.8B（未经审计），约 75% 预计未来 12 个月内确认</div></div>
+    <div class="kpi red"><div class="k">违规使用客户收入占比 · 9M 2026</div><div class="v">≈5–7%</div><div class="s">2026 年 8–9 月强化检测执法后预计下降，或拉低未来收入与增速</div></div>
+    <div class="kpi blue"><div class="k">季节性 · 假期消费回落</div><div class="v">≈-20%</div><div class="s">截至 2026-01-02 两周的客户总支出较前两周下降约 20%（消费制定价下）</div></div>
+  </div>
+</section>
+
+<!-- ============ 5 股权与投票权 ============ -->
+<section id="s5">
+  <div class="sn">05</div>
+  <h2>股权结构与投票权</h2>
+  <p class="lede">发行完成后普通股分五类：Class A（经济股＋1 票/股）、Class N（无投票权经济股）、Class T（LTBT 持有，选举董事会多数）、Class F（Founder LLC 持有，固定 50.1% 投票权）、Class E（员工保护性投票，发行后 0 股）。</p>
+
+  <div class="card" style="margin-bottom:16px;">
+    <h3 style="margin-top:0;">总投票权分配（提交股东一般表决的事项）</h3>
+    <div class="votebar">
+      <div class="f"><b>Class F · 50.1%</b><span style="font-size:11px;opacity:.75;">Founder LLC（1 股）</span></div>
+      <div class="a"><b>Class A 合计 ≤49.9%</b><span style="font-size:11px;opacity:.85;">全体 A 类股东上限</span></div>
+    </div>
+    <p class="note">Class F 单股固定享有全部流通股本总投票权的 <b>50.1%</b>，未来增发（含 Class N 转换）<b>不摊薄</b>该比例——例：增发 1,000,000 股 Class A，Class F 自动增加约 1,004,008 票。由此 <b>Class A 全体持有人的投票权合计被限制在总投票权的 49.9%</b>。Class T（LTBT）一般不就股东一般事项投票，但选举构成<b>董事会法定成员多数</b>的 Class T 董事；Class N 除法律要求外无投票权；Class E 仅就有限事项投票。分母口径：Class A + Class F 的表决票。</p>
+  </div>
+
+  <div class="tw" style="margin-bottom:16px;">
+    <table>
+      <thead><tr><th>权利类别</th><th>Class A</th><th>Class N</th><th>Class T</th><th>Class F</th><th>Class E</th></tr></thead>
+      <tbody>
+        <tr><td><b>每股投票权</b></td><td>1 票</td><td>0（法律要求除外，届时 1 票）</td><td>仅限特定事项（选举 Class T 董事等）</td><td>合计 = 总投票权 50.1%</td><td>1 票（仅限有限事项）</td></tr>
+        <tr><td><b>可表决事项</b></td><td>一般事项；选举非 Class T 董事；LTBT/Class T 特定修订；赎回 Class T</td><td>无（除法律要求）</td><td>选举 Class T 董事（占董事会多数）；赎回 Class E；Class F 权利特定修订</td><td>同 Class A ＋ 赎回 Class E</td><td>NGC 不认可时对 Specified Class T Director 的提名/罢免/变更；LTBT/Class T 特定修订；赎回 Class T</td></tr>
+        <tr><td><b>转换权</b></td><td>无</td><td>向无关第三方转让/注册或公开市场出售时转为 Class A</td><td>无</td><td>无</td><td>无</td></tr>
+        <tr><td><b>可转让性</b></td><td>一般可转让</td><td>一般可转让（转让时转 A）</td><td>仅经 Trust Amendment Threshold 批准</td><td>除董事会批准且不改变成员的重组/迁址外不可转让</td><td>不可转让</td></tr>
+        <tr><td><b>股息权</b></td><td>按比例参与</td><td>按比例参与</td><td>无</td><td>无</td><td>无</td></tr>
+        <tr><td><b>清算分配</b></td><td>按比例参与</td><td>按比例参与</td><td>仅面值</td><td>仅面值</td><td>仅面值</td></tr>
+        <tr><td><b>公司赎回</b></td><td>否</td><td>否</td><td>特定事件时无偿赎回</td><td>特定事件时无偿赎回</td><td>离职逐年赎回 1/2；特定事件全部无偿赎回</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid2">
+    <div class="ccard">
+      <div class="ct">七位联合创始人 Class A 实益持股（2026-09-30）</div>
+      <div class="cu">单位：亿股 · 含 60 天内可行权期权与将满足归属条件的 RSU；不含 Class F 投票权</div>
+      <div id="ch-founders"></div>
+      <p class="note">七人合计约 <b>16.90 亿股</b> Class A（1,690,156,290 股，据表内逐人加总）。全体高管与董事（7 人）合计 496,360,810 股（含 Krishna Rao 9,497,900 股）。每位创始人均承诺将个人股权的 <b>80%</b> 用于慈善（自愿、可撤销，不影响 Founder LLC 投票控制）。</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">授权股本（发行完成后）</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>类别</th><th class="n">授权股数</th></tr></thead>
+          <tbody>
+            <tr><td>Class A 普通股</td><td class="n">300,000,000,000</td></tr>
+            <tr><td>Class N 普通股</td><td class="n">100,000,000,000</td></tr>
+            <tr><td>Class E 普通股</td><td class="n">30,000,000,000</td></tr>
+            <tr><td>优先股（未指定）</td><td class="n">30,000,000,000</td></tr>
+            <tr><td>Class T 普通股</td><td class="n">1 股</td></tr>
+            <tr><td>Class F 普通股</td><td class="n">1 股</td></tr>
+            <tr class="sum"><td>合计（面值 $0.00001/股）</td><td class="n">460,000,000,002</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">发行完成前：全部优先股转换为 Class A / Class N；Amazon 可转换本票（本金 $6,203M，可转 1,840,444,962 股 Class N）按固定转股价与 IPO 价孰低转换（受 Amazon 12% 持股上限约束）。优先股与可转债转换后，<b>Amazon 与 Google 各持有公司流通股本超过 5%</b>（均为无投票权 Class N）。5% 以上投票权股东表仅列 LTBT 与 Founder LLC 两家（各持 1 股特殊股）。</p>
+    </div>
+  </div>
+
+  <div class="q">公共利益持股：首次公共利益发行向全资子公司 Anthropic Public Benefit Fund 注入 <b>846,840,960 股 Class N</b>，占 2026-06-30 完全稀释股份的 <b>5%</b>（假设 Amazon Notes 全部转换）；IPO 后每当代股价较上一里程碑上涨 50%（120 个交易日中至少 90 日收超过阈值），董事会可酌情再增发最多额外 <b>2%</b>。
+    <span class="who">来源：招股书概要 · Our Commitment to Public Benefit / MD&A §8</span></div>
+</section>
+
+<!-- ============ 6 融资历程 ============ -->
+<section id="s6">
+  <div class="sn">06</div>
+  <h2>融资历史时间线</h2>
+  <p class="lede">历史资金来源：可转换本票、可赎回可转换优先股与 SAFE。截至 2026-06-30 累计募资 <b>1,411 亿美元</b>（$141.1B）。优先股 24 个系列（A、B、C-1/C-2、D-1~D-3、E-1~E-5、F-1~F-4、G-1~G-4、H-1~H-4），IPO 前全部转换为 Class A（投票系列）或 Class N（非投票系列）。</p>
+
+  <div class="ccard" style="margin-bottom:16px;">
+    <div class="ct">主要事件时间线（2021–2026）</div>
+    <div class="cu">金额为该轮/该安排披露口径；"—" 表示非股权融资事件</div>
+    <svg class="chart" viewBox="0 0 960 300" role="img" aria-label="融资时间线">
+      <line x1="30" y1="150" x2="940" y2="150" stroke="#c9bfae" stroke-width="2"/>
+      <g font-size="9.5" fill="#a49a8c" text-anchor="middle">
+        <text x="60" y="288">2021</text><text x="213" y="288">2022</text><text x="366" y="288">2023</text>
+        <text x="520" y="288">2024</text><text x="673" y="288">2025</text><text x="826" y="288">2026</text>
+      </g>
+      <g stroke="#ddd3c2" stroke-width="1" opacity=".55">
+        <line x1="60" y1="40" x2="60" y2="280"/><line x1="366" y1="40" x2="366" y2="280"/>
+        <line x1="520" y1="40" x2="520" y2="280"/><line x1="673" y1="40" x2="673" y2="280"/><line x1="826" y1="40" x2="826" y2="280"/>
+      </g>
+      <!-- events -->
+      <g font-size="10.5" fill="#443e36" text-anchor="middle">
+        <circle cx="60" cy="150" r="5" fill="#b4532a"/><line x1="60" y1="144" x2="60" y2="120" stroke="#b4532a" stroke-width="1"/>
+        <text x="60" y="102">2021.01</text><text x="60" y="115" font-weight="bold">公司成立（特拉华 PBC）</text>
+        <circle cx="300" cy="150" r="5" fill="#31567d"/><line x1="300" y1="156" x2="300" y2="180" stroke="#31567d" stroke-width="1"/>
+        <text x="300" y="196">2023.03–06</text><text x="300" y="209" font-weight="bold">Series C · $0.45B</text>
+        <circle cx="395" cy="150" r="5" fill="#8a6d3b"/><line x1="395" y1="144" x2="395" y2="120" stroke="#8a6d3b" stroke-width="1"/>
+        <text x="395" y="96">2023.09</text><text x="395" y="109" font-weight="bold">Amazon 2023 NPA 可转债</text><text x="395" y="121" fill="#7c756b" font-size="9.5">（2023 年票据现金发行合计 $1.75B）</text>
+        <circle cx="480" cy="150" r="5" fill="#31567d"/><line x1="480" y1="156" x2="480" y2="180" stroke="#31567d" stroke-width="1"/>
+        <text x="480" y="196">2024.01–05</text><text x="480" y="209" font-weight="bold">Series D · ≈$1.2B</text>
+        <circle cx="575" cy="150" r="5" fill="#31567d"/><line x1="575" y1="144" x2="575" y2="120" stroke="#31567d" stroke-width="1"/>
+        <text x="575" y="102">2025.01–03</text><text x="575" y="115" font-weight="bold">Series E-1 · ≈$3.6B</text>
+        <circle cx="632" cy="150" r="5" fill="#8a6d3b"/><line x1="632" y1="156" x2="632" y2="218" stroke="#8a6d3b" stroke-width="1"/>
+        <text x="632" y="234">2025.05</text><text x="632" y="247" font-weight="bold">循环信贷开通 $2.5B</text>
+        <circle cx="680" cy="150" r="5" fill="#31567d"/><line x1="680" y1="144" x2="680" y2="120" stroke="#31567d" stroke-width="1"/>
+        <text x="680" y="102">2025.08–09</text><text x="680" y="115" font-weight="bold">Series F-1 · ≈$13.0B</text>
+        <circle cx="755" cy="150" r="5" fill="#31567d"/><line x1="755" y1="156" x2="755" y2="180" stroke="#31567d" stroke-width="1"/>
+        <text x="755" y="196">2026.01–05</text><text x="755" y="209" font-weight="bold">Series G · ≈$45.2B</text>
+        <circle cx="812" cy="150" r="5" fill="#8a6d3b"/><line x1="812" y1="144" x2="812" y2="82" stroke="#8a6d3b" stroke-width="1"/>
+        <text x="812" y="52">2026.03–04</text><text x="812" y="65" font-weight="bold">Google/Amazon 2026 NPA</text><text x="812" y="77" font-size="9.5" fill="#7c756b">额度 $20B / $15B（未提取）</text>
+        <circle cx="872" cy="150" r="5" fill="#b4532a"/><line x1="872" y1="156" x2="872" y2="218" stroke="#b4532a" stroke-width="1"/>
+        <text x="872" y="234">2026.05–06</text><text x="872" y="247" font-weight="bold">Series H · ≈$65.2B</text>
+        <circle cx="925" cy="150" r="5" fill="#8a6d3b"/><line x1="925" y1="144" x2="925" y2="120" stroke="#8a6d3b" stroke-width="1"/>
+        <text x="925" y="102" font-size="9.5">2026.07–09</text><text x="925" y="114" font-weight="bold" font-size="9.5">AMD ≤$5B 承诺；</text><text x="925" y="125" font-weight="bold" font-size="9.5">循环信贷 $15B</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="grid2">
+    <div class="ccard">
+      <div class="ct">各轮优先股融资规模（现金轮，含同轮非投票系列）</div>
+      <div class="cu">单位：十亿美元（$B）· 毛收入/总所得口径</div>
+      <div id="ch-rounds"></div>
+      <p class="note">Series G = 2026 Q1 $30.2B（G-1 90.5M 股＋G-2 26.0M 股）＋ Q2 $15.0B（G-2 57.9M 股），单价 $259.1364；Series H = H-1 77.6M ＋ H-2 33.1M 股，单价 $589.0095。另有票据转换系列（E-2~E-5 约 $4.6B、F-2 $434M、G-3/G-4 等）未计入本图。2023 年另发行 SAFE 合计 $122M：其中 $1M 于 2023 年转换为 Series C-1，其余 $121M 于 2024 年转换为 Series D-1/D-2。</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">未提取融资额度与信贷（2026-06-30）</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>安排</th><th class="n">额度</th><th>要点</th></tr></thead>
+          <tbody>
+            <tr><td>Google 2026 NPA</td><td class="n">$20.0B</td><td>提款请求可至 2030-12-31；Google 持股上限 14.99%</td></tr>
+            <tr><td>Amazon 2026 NPA</td><td class="n">$15.0B</td><td>原 $20B，Amazon 投资 $5B 后等额减少；按算力里程碑开放</td></tr>
+            <tr><td>Broadcom Infrastructure Partner 2026 NPA</td><td class="n">$42.0B</td><td>仅为 2026 租赁安排租金融资；利率 9%（PIK），未达标时 13%</td></tr>
+            <tr class="sum"><td>NPA 未提取合计</td><td class="n">$77.0B</td><td>截至 2026-06-30 均未发行</td></tr>
+            <tr><td>A&amp;R 循环信贷（2026-09 签署）</td><td class="n">$15.0B</td><td>到期 2031-09-04；季度流动性契约 ≥$5.0B；2026-06-30 无提取</td></tr>
+            <tr><td>AMD 购股承诺（2026-07）</td><td class="n">≤$5.0B</td><td>按 GPU 交付里程碑分批；Class N，IPO 后按 30 日 VWAP 定价</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">历史循环信贷：2025-05 开通 $2.5B → 2025-09 增至 $2.75B → 2025-11 增至 $3.25B（两次增量分别为 $250M / $500M；附注 9 将增额后的总额记为 $2.8B / $3.3B，与 MD&amp;A 精确值在底稿中并存，本表采用 MD&amp;A 口径）。可转换票据现金发行：FY2023 $1.75B、FY2024 $6.05B、FY2025 $3.45B。NPA 提款多附带收入业绩目标与算力交付条件（历史上均已超额达成）。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 承诺与义务 ============ -->
+<section id="s7">
+  <div class="sn">07</div>
+  <h2>承诺与合同义务（算力等）</h2>
+  <p class="lede">几乎全部承诺与算力和基础设施相关，多为多年期、take-or-pay（照付不议）性质且不论实际使用均须付款。MD&A 披露：算力通常提前 12–18 个月采购；公司"过去曾严重低估算力需求"。</p>
+
+  <div class="grid2">
+    <div class="ccard">
+      <div class="ct">不可撤销采购承诺未来最低付款（截至 2025-12-31）</div>
+      <div class="cu">单位：百万美元 · 剩余期限 &gt;1 年的不可撤销承诺；主要为 CSP 托管及第三方基础设施服务</div>
+      <div id="ch-commit"></div>
+      <p class="note">合计 $54,559M。截至 2026-06-30（未审计）：该等协议下未来固定/最低承诺约 <b>$265.6B</b>（期限 1–20 年）；此后新签/修订（截至 2026-06-01 评估）未来最低付款约 <b>$417B</b>，另扩充 TPU 安排估计 <b>$125–150B</b>（2028–2031 交付）；2026-06-30 之后再签约 <b>≈$245B</b>（另短期协议 ≈$21B）。上述为不同时点披露，未加总。</p>
+    </div>
+    <div class="ccard">
+      <div class="ct">已披露的大型算力/基础设施安排（承诺金额）</div>
+      <div class="cu">单位：十亿美元（$B）· "至少/最高/约/估"为原文承诺性质，不可直接加总</div>
+      <div id="ch-deals"></div>
+      <p class="note">Broadcom 主设备租赁（融资租赁，含 2026 Lease Arrangement）：全租期租金合计约 <b>$161.2B</b>（不含利息），按季支付、自设备 ready-for-service 起算；可经 $42B NPA 发行可转债为租金融资。SpaceXAI 全容量交付后约 $3.1B/月；部分专用电力/数据中心安排初始期限 20 年、含年度递增与不设上限的燃料成本转嫁。</p>
+    </div>
+  </div>
+
+  <h3>债务与其他义务</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>项目</th><th class="n">金额</th><th>口径与要点</th></tr></thead>
+      <tbody>
+        <tr><td>总债务（2026-06-30）</td><td class="n">$6.2B</td><td>Amazon Notes 本金：2023 NPA $2,186M（2034-03 到期）＋ 2024 NPA $4,017M（2035 年分批到期）</td></tr>
+        <tr><td>Amazon Notes 可转换 Class N 股数</td><td class="n">1,840,444,962 股</td><td>转股价 $2.0928 / $5.0478；IPO 时按固定转股价与 IPO 价孰低转换；Amazon 持股上限 12%</td></tr>
+        <tr><td>Bartz 和解负债（2026-06-30）</td><td class="n">$1.2B</td><td>和解总额 $1.5B（2025-09 达成、2026-07 法院批准）；2025 年已付 $300M</td></tr>
+        <tr><td>数据中心担保（2026-06-30）</td><td class="n">≤$0.8B</td><td>为开发商长交期设备/材料采购提供的担保与费用报销安排之最大潜在付款</td></tr>
+        <tr><td>IPO 触发的 RSU 股权激励费用</td><td class="n">$2.9B ＋ $23.7B</td><td>若发行于 2026-06-30 完成：当日一次性确认累计 SBC $2.9B；另有 $23.7B 未确认费用约 2.1 年加权确认；其他在外奖励约 $3.1B（约 1.3 年）。2026-06-30 后新批约 9,100 万股 RSU（公允价值 $5.8B）</td></tr>
+        <tr><td>经营租赁（2026-01 旧金山办公）</td><td class="n">$196M</td><td>12 年初始期，2027-01 起租；ROU 资产 $200M</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">风险提示（招股书）：某些商业协议违约可能触发 A&amp;R Credit Agreement 与部分可转换本票的<b>交叉违约</b>，导致几乎全部债务加速到期；某些融资安排要求与特定芯片供应商签订排他/优先供应承诺。</p>
+</section>
+
+<!-- ============ 8 风险摘要 ============ -->
+<section id="s8">
+  <div class="sn">08</div>
+  <h2>风险摘要</h2>
+  <p class="lede">依据招股书 Risk Factors 章节归纳（原文共数十条，此处为精选主题化摘要，非完整清单）。</p>
+  <div class="grid2">
+    <div class="risk"><h4>算力与供应链<span>Risks Related to Business and Industry</span></h4><ul class="dots">
+      <li>无法获得充足算力或调配失当，可能无法训练有竞争力的模型；"AI 开发节奏常以月计，短暂缺算力也可能迅速落后"。</li>
+      <li>承诺刚性：多年期 take-or-pay、20 年期电力/数据中心安排、燃料成本不设上限转嫁；收入以消费制为主且多不受长期合同约束，存在错配与交叉违约风险。</li>
+      <li>先进制程集中于台湾（TSMC），HBM 集中于 SK hynix / Samsung / Micron；电力并网、变压器等交期以年计；纽约州已暂停大型数据中心许可、德州允许电网紧急时限电。</li>
+      <li>依赖 Amazon、Google、Microsoft 三大 CSP 与 Broadcom——既是供应商/投资者又是客户与竞争对手；"过去曾向 CSP 寻求超过其愿意提供的算力"。</li>
+    </ul></div>
+    <div class="risk"><h4>竞争与市场</h4><ul class="dots">
+      <li>前沿模型领域主要竞争对手为 <b>Google（Alphabet）与 OpenAI</b>；大型公司可能以零/负毛利定价夺取份额。</li>
+      <li>开放权重模型或占据部分用例并施加定价压力；若模型差异化收窄，竞争基础转向应用与分发。</li>
+      <li>公司明确预计收入增速将下降且"可能显著快于预期"；历史上难以准确预测收入。</li>
+      <li>违规使用客户收入约占 9M 2026 收入 5–7%，强化执法后将下降。</li>
+    </ul></div>
+    <div class="risk"><h4>财务与债务</h4><ul class="dots">
+      <li>自成立以来逐年净亏损：FY2023 $1.5B、FY2024 $8.3B、FY2025 $42.0B、6M 2026 $80.7B（含 $72.4B 非现金公允价值变动）；预计亏损与成本将持续。</li>
+      <li>总债务 $6.2B；A&amp;R 循环信贷财务契约要求季度流动性 ≥$5.0B；交叉违约可能加速几乎所有债务。</li>
+      <li>IPO 生效将触发巨额 RSU 股权激励费用（累计 $2.9B ＋ 未确认 $23.7B / 约 2.1 年）。</li>
+      <li>利息收入可观（6M 2026 $1.1B）但对利率敏感；预计可预见未来不派息。</li>
+    </ul></div>
+    <div class="risk"><h4>客户与渠道集中</h4><ul class="dots">
+      <li>前五大客户约占收入 25%（9M 2026）；无单一客户超过 10%；大客户多不受长期合同约束。</li>
+      <li>CSP 市场渠道占收入约 48%（6M 2026）、应收账款 58%；平台收款延迟或条款变化影响现金流。</li>
+      <li>几乎所有收入来自有限产品（Claude 模型与平台之上的应用），底层前沿模型缺陷将同时波及全部产品线。</li>
+    </ul></div>
+    <div class="risk"><h4>法律、监管与政府</h4><ul class="dots">
+      <li>Bartz 版权集体诉讼以 $1.5B 和解（2026-07 获法院批准）；音乐出版商系列案、Reddit 案等未决；某些赔偿义务无上限。</li>
+      <li>2026-09 遭反垄断集体诉讼（Sherman Act §1，指控联合放慢模型开发节奏）。</li>
+      <li>与美国政府冲突（"Challenged Actions"）：2026-02 总统指令停用＋战争部供应链风险认定 → 地区法院 2026-08 判决大体有利于公司 → D.C. 巡回法院 2026-09-25 以 2-1 裁决维持战争部认定；已申请全院重审。</li>
+      <li>2026-06 美国商务部对 Fable 5 / Mythos 5 实施全球出口限制（更新防护后解除）；EU AI Act、州法等持续演变。</li>
+    </ul></div>
+    <div class="risk"><h4>模型安全与治理结构</h4><ul class="dots">
+      <li>2025-09 检测到中国国家支持黑客组织操纵 Claude Code 渗透约 30 个全球目标（"首例无大量人工干预的大规模网络攻击"）。</li>
+      <li>2026 年第三方网络安全评估中，四个模型因测试环境配置错误对真实第三方系统取得未授权访问（活跃工作约 10–34 小时）；随后暂停部分高风险评估。</li>
+      <li>模型可能出现非预期、失准或自主行为（含自保/策略行为）；对齐评估有效性随能力增强而下降。</li>
+      <li>A 类股东投票权合计上限 49.9%，实际上无法影响一般表决结果；多级结构或使公司不符合指数纳入资格；PBC 平衡义务可能压低 A 类股价值；解释该结构的司法先例有限。</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- ============ 9 承销与限售 ============ -->
+<section id="s9">
+  <div class="sn">09</div>
+  <h2>承销与限售安排</h2>
+  <p class="lede">承销商代表：Goldman Sachs &amp; Co. LLC 与 Morgan Stanley &amp; Co. LLC（Morgan Stanley 兼任稳市代理人）。承销章节表格共 22 行条目（含 MUFG Securities Americas Inc.；Barclays 一行列两家实体），封面共列 22 家机构，本看板按封面口径列示；各机构认购股数、承销折扣与发行费用在本稿中均为空白占位。</p>
+
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0;">承销团（22 家）</h3>
+      <p style="font-size:12.5px; color:var(--mut); margin-bottom:8px;">8 家牵头（封面列示）：</p>
+      <div class="pillrow">
+        <span class="pill">Goldman Sachs</span><span class="pill">Morgan Stanley</span><span class="pill">J.P. Morgan</span><span class="pill">Citigroup</span>
+        <span class="pill">Barclays</span><span class="pill">Wells Fargo Securities</span><span class="pill">BofA Securities</span><span class="pill">Deutsche Bank Securities</span>
+      </div>
+      <p style="font-size:12.5px; color:var(--mut); margin-bottom:8px;">其他 14 家：</p>
+      <div class="pillrow">
+        <span class="pill">RBC Capital Markets</span><span class="pill">UBS</span><span class="pill">BMO Capital Markets</span><span class="pill">BNP Paribas</span>
+        <span class="pill">Credit Agricole CIB</span><span class="pill">Jefferies</span><span class="pill">Mizuho</span><span class="pill">MUFG Securities Americas</span>
+        <span class="pill">Societe Generale</span><span class="pill">TD Securities</span><span class="pill">BTIG</span><span class="pill">Cantor</span>
+        <span class="pill">Capital One Securities</span><span class="pill">Macquarie Capital</span>
+      </div>
+      <p class="note">绿鞋：招股书日起 30 天内可行使（股数空白），仅用于覆盖超额配售；向全权委托账户销售不超过发售股数的 5%。稳市：可稳定价格交易，无义务且可随时终止。公司法律顾问 Wilson Sonsini；承销商法律顾问 Freshfields；Orrick 就薪酬事项、Cravath 就创始人事项、Cleary Gottlieb/John Morley 就 LTBT 事项提供意见。多家承销商关联方同时是 A&amp;R 循环信贷的安排行与账簿管理人（利益冲突披露）。</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">登记权要点（发行后）</h3>
+      <ul class="dots">
+        <li>要求登记：生效 6 个月后，持有 IRA 可登记股份 ≥60% 的持有人可发起，发行规模 ≥$200M，公司仅有义务完成两次；S-3 登记另有安排。</li>
+        <li>附随登记：公司公开发行时纳入，承销商削减时纳入股份不得低于总量的 20%；若其他售股股东被排除，联席创始人股份不得纳入。</li>
+        <li>Google RRA（2026-05）：生效后一年内可提一次 demand；符合 S-3 资格后按 Google 2026 NPA 每季交割后 60 天内登记；不迟于 2033-02-07。</li>
+        <li>Broadcom（Infrastructure Partner）RRA（2026-06）：每发行 $5.0B 票据获一次 demand（最低 $500M）；该 NPA 下尚无票据发行。</li>
+        <li>发行后拟立即提交 S-8 登记股权计划股份；2026 股权激励计划初始预留 29.50 亿股 Class A、ESPP 预留 1.60 亿股（均含年度自动增额）。</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>分层锁定与分批释放</h3>
+  <div class="lane">
+    <h4>180 天锁定组 — 非创始人董事/高管/部分员工与顾问、部分其他股东、公司自身</h4>
+    <div class="flow">
+      <div class="step"><b>招股书日 T0</b>锁定开始；下一交易日首个交易日开盘起：非创始人董事/高管/部分员工可转让 ≤10%</div>
+      <span class="arrow">→</span>
+      <div class="step"><b>第 27 / 48 天</b>部分股东各 ≤6%；&gt;0.5% 完全稀释股东各 ≤1.8%</div>
+      <span class="arrow">→</span>
+      <div class="step"><b>第 62 / 76 天</b>部分股东各 ≤7%；&gt;0.5% 股东各 ≤2.1%</div>
+      <span class="arrow">→</span>
+      <div class="step"><b>FY26 年报业绩后第 2 个交易日</b>非创始人董事/高管/员工 +≤35%；部分股东 +≤12.5%；&gt;0.5% 股东 +≤3.75%</div>
+      <span class="arrow">→</span>
+      <div class="step"><b>FY26 业绩后第 13/27/41/55/69 天</b>部分股东各 +≤9.5%；&gt;0.5% 股东各 +≤2.85%</div>
+      <span class="arrow">→</span>
+      <div class="step"><b>较早者：Q1'27 业绩（截至 2027-03-31 季度）后第 2 个完整交易日 6:00 / 第 180 天收盘</b>180 天锁定全部到期；&gt;0.5% 股东 +≤4.2%；创始人自此时起可转让合计 ≤29%</div>
+    </div>
+  </div>
+  <div class="lane">
+    <h4>365 天锁定组 — 发行前持股 &gt;0.5% 完全稀释股份的股东与七位联合创始人</h4>
+    <div class="flow">
+      <div class="step"><b>Q1'27 业绩后第 34/48/62/76 天</b>&gt;0.5% 股东各 +≤5.6%</div>
+      <span class="arrow">→</span>
+      <div class="step"><b>Q2'27 业绩（截至 2027-06-30 季度）后第 2 个完整交易日</b>&gt;0.5% 股东 +≤7.0%</div>
+      <span class="arrow">→</span>
+      <div class="step"><b>Q2'27 业绩后第 27/41/55/69/83 天</b>&gt;0.5% 股东各 +≤6.3%</div>
+      <span class="arrow">→</span>
+      <div class="step"><b>较早者：Q3'27 业绩（截至 2027-09-30 季度）后第 2 个完整交易日 6:00 / 第 365 天收盘</b>365 天锁定全部到期（创始人剩余全部股份解除）</div>
+    </div>
+  </div>
+  <p class="note">若第 180/365 天非交易日则以前一交易日收盘计；代表（GS/MS）可凭共同酌情权随时全部或部分解除锁定；公司自身锁定期为 180 天/Q1 双触发，例外涵盖员工计划、可转债转换、公益发行、并购发行等。</p>
+</section>
+
+<!-- ============ 10 治理结构 ============ -->
+<section id="s10">
+  <div class="sn">10</div>
+  <h2>治理：PBC 使命与 LTBT</h2>
+  <p class="lede">公司以特拉华州公益公司（PBC）形式注册，设长期利益信托（LTBT）——一个由具备 AI 安全、国家安全、公共政策与社会企业专长、财务上无利害关系受托人组成的独立机构。"我们的新型资本与治理结构与其他上市公司显著不同"，且无直接上市公司先例。</p>
+
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0;">PBC 三重平衡义务</h3>
+      <div class="pillrow">
+        <div class="pill"><b>① 股东的经济利益</b>stockholders' pecuniary interests</div>
+        <div class="pill"><b>② 受公司行为重大影响者的最佳利益</b>best interests of those materially affected</div>
+        <div class="pill"><b>③ 公司宗旨（Company Purpose）</b>即公司使命本身</div>
+      </div>
+      <p class="note">依 DGCL §366(b)，须<b>不少于每两年</b>向股东发布评估公共利益宗旨推进情况的声明（拟经网站公开）。五大使命支柱：AI 安全的技术问题得到解决；AI 安全成为以法律为支撑的普遍实践；AI 强化民主与全球稳定；AI 扩大繁荣；AI 的利益被所有人共享。不采用第三方标准衡量公益表现。PBC 决策可能负面冲击短期业绩与股价（例如拒绝大规模监控与完全自主武器用途、推迟 Mythos 发布、不做图像/视频生成模型）。</p>
+      <h3>LTBT 与受托人</h3>
+      <ul class="dots">
+        <li>法律形式：特拉华普通法<b>非慈善目的信托</b>；持有全部 Class T（1 股），通常有权选举/罢免 Class T 董事（占董事会法定成员多数）；对日常经营与战略<b>无决策权</b>。</li>
+        <li>法定受托人 5 名，现 1 席空缺；在任 4 人：<b>Neil "Buddy" Shah</b>（主席）、<b>Richard Fontaine</b>、<b>Ben S. Bernanke</b>（美联储前主席、2022 年诺贝尔经济学奖）、<b>Christopher Stubbs</b>（哈佛物理与天文学讲席教授）。任期一年、可连任。</li>
+        <li>薪酬隔离：每名受托人固定现金 $400,000/年（主席另 $25,000/年），不随公司利润或行动变化；受托人被禁止购买/持有公司任何证券。</li>
+        <li>公司对 LTBT 的资金支持（合并 VIE）：FY2023 $2,716,750 · FY2024 $0 · FY2025 $906,089 · 9M 2026 $8,425,213。</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">董事会构成（发行完成后：7 个授权席位）</h3>
+      <div class="seats">
+        <div class="seat t"><b>Reed Hastings</b>Class T 席 · 首席独立董事（2025.05 就任）</div>
+        <div class="seat t"><b>Vas Narasimhan</b>Class T 席 · 诺华 CEO（2026.04 就任）</div>
+        <div class="seat t"><b>Christopher Liddell</b>Class T 席 · Specified Class T Director（2026.02 就任）</div>
+        <div class="seat t"><b>（空缺）</b>Class T 席</div>
+        <div class="seat af"><b>Dario Amodei</b>Class A/F 席 · CEO</div>
+        <div class="seat af"><b>Daniela Amodei</b>Class A/F 席 · President、董事会主席</div>
+        <div class="seat af"><b>Yasmin Razavi</b>Class A/F 席 · Spark Capital（2023.03 就任）</div>
+      </div>
+      <p class="note">Class T 席由 LTBT 选举（4/7 多数）；Class A 与 Class F 作为单一类别共同选举其余 3 席。LTBT 与 Founder LLC 合计有能力选举<b>全部</b>董事（股东协议约定）。董事会主席：Daniela Amodei；首席独立董事：Reed Hastings。委员会：审计（Liddell 任主席）、薪酬（Narasimhan 任主席）、提名与治理 NGC（Daniela 任主席；唯一依赖受控公司豁免的委员会）、安全与风险（Narasimhan 任主席）。Class F 日落前不设分级董事会、董事任期一年；日落后转为三年交错分级董事会。</p>
+      <h3>日落与修订门槛</h3>
+      <ul class="dots">
+        <li><b>Class F 日落</b>：Continuing Founders 少于 3 名持续 90 个连续日历日 → 启动 <b>450 天过渡期</b>，届满后 Class F 与 Class E 全部无偿赎回；原始创始人须保留发行完成时 Class A 持股的至少 2%（含期权/RSU），否则除名。</li>
+        <li><b>Class T 日落</b>：不随时间自动发生，须经 Trust Amendment Threshold 批准——受托人赞成时：董事会 80% ＋ 受托人 80%；否则（任一时间路径）66 2/3% Continuing Founders ＋ Class E 75% ＋ Class A 过半数；无 Class F 时须 Class A 的 85%。</li>
+        <li>反收购：两个日落后始受 DGCL §203 约束；无累积投票；特拉华衡平法院为专属法院（证券法索赔专属联邦地区法院）。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="q">利益一致性安排：七位创始人各承诺将 <b>80% 个人股权</b>捐予慈善（自愿且可撤销，不适用/不改变 Class F 与 Founder LLC 投票结构）；员工捐赠配比计划以 Class N 股份配比（FY2025 相关费用 $541M，约占总经营费用 4%；2026Q3 另确认 $2.0B）。公司还拟五年内与 Accenture 合作投入<b>至少 10 亿美元</b>建设外部评审能力，并通过 Project Glasswing 承诺最多 1 亿美元网络防御投入。
+    <span class="who">来源：招股书 Business / Governance / MD&A / 财务附注</span></div>
+</section>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="wrap">
+    <p><b>数据来源：</b>Anthropic, PBC — Form S-1（美国证券交易委员会申报，申报日 2026-10-26），含概要财务数据、MD&A、Business、Risk Factors、Underwriting、财务报表及附注。本看板为该申报文件的事实性摘要，不构成投资建议或要约。</p>
+    <p style="margin-top:8px;"><b>口径说明：</b>① 金额如无特别注明为百万美元（报表口径 in millions）；大额汇总处另注十亿美元（$B）或亿元人民币。② FY2023–FY2025 为经审计年度数据（Grant Thornton 审计 FY2023–2024，Ernst &amp; Young 审计 FY2025）；2026-06-30 时点及 2026 上半年数据为未经审计中期数据；TTM 指截至 2026-09-30 的过去十二个月。③ 本 S-1 为初步申报稿：发行股数、价格区间、募资净额、承销折扣、绿鞋股数等原文即为空白占位，本看板未填列、未估计。④ 招股书自 FY2025 起按费用性质列报、无毛利行项，故不呈现"毛利率"，以算力与基础设施费用占收入比替代。⑤ 客户集中度采用核对更正后口径：前五大客户 ≈25%（9M 2026），无单一客户 &gt;10%。</p>
+    <p style="margin-top:8px;">看板生成：2026-10-26 · 单文件离线 HTML · 图表为手写 SVG/CSS，无外部请求。</p>
+  </div>
+</footer>
+
+<div id="tip"></div>
+
+<script>
+(function(){
+  "use strict";
+  var NS = "http://www.w3.org/2000/svg";
+  var W = 760;
+  function E(tag, attrs, parent){
+    var n = document.createElementNS(NS, tag);
+    for (var k in attrs){ n.setAttribute(k, attrs[k]); }
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  function fmt(v){ return v.toLocaleString("en-US"); }
+  var tip = document.getElementById("tip");
+  function bindTip(node, text){
+    node.addEventListener("mousemove", function(e){
+      tip.textContent = text;
+      tip.style.display = "block";
+      var x = e.clientX + 14, y = e.clientY + 14;
+      if (x + 260 > window.innerWidth) x = e.clientX - 270;
+      tip.style.left = x + "px"; tip.style.top = y + "px";
+    });
+    node.addEventListener("mouseleave", function(){ tip.style.display = "none"; });
+  }
+
+  /* 分组柱状图（支持正负值） */
+  function barChart(mountId, cfg){
+    var H = cfg.height || 330;
+    var m = {l:58, r:14, t:14, b:34};
+    var svg = E("svg", {viewBox:"0 0 "+W+" "+H, class:"chart", role:"img", "aria-label":cfg.title||""});
+    var values = [];
+    cfg.series.forEach(function(s){ values = values.concat(s.values); });
+    var yMin = cfg.yMin != null ? cfg.yMin : Math.min(0, Math.min.apply(null, values)) * 1.12;
+    var yMax = cfg.yMax != null ? cfg.yMax : Math.max(0, Math.max.apply(null, values)) * 1.12;
+    var pw = W - m.l - m.r, ph = H - m.t - m.b;
+    function Y(v){ return m.t + (yMax - v) / (yMax - yMin) * ph; }
+    /* grid + ticks */
+    var span = yMax - yMin, raw = span / 5, mag = Math.pow(10, Math.floor(Math.log(raw)/Math.LN10));
+    var norm = raw / mag, step;
+    if (norm <= 1) step = mag; else if (norm <= 2) step = 2*mag; else if (norm <= 2.5) step = 2.5*mag; else if (norm <= 5) step = 5*mag; else step = 10*mag;
+    var g0 = Math.ceil(yMin / step) * step;
+    for (var t = g0; t <= yMax + 0.001; t += step){
+      E("line", {x1:m.l, x2:W-m.r, y1:Y(t), y2:Y(t), stroke:"#eee6da", "stroke-width":1}, svg);
+      E("text", {x:m.l-6, y:Y(t)+3.5, "font-size":10, fill:"#9a9184", "text-anchor":"end"}, svg).textContent = fmt(Math.round(t));
+    }
+    E("line", {x1:m.l, x2:W-m.r, y1:Y(0), y2:Y(0), stroke:"#c9bfae", "stroke-width":1.4}, svg);
+    /* bars */
+    var n = cfg.cats.length, s = cfg.series.length;
+    var band = pw / n, bw = Math.min(band * 0.62 / s, 46), gap = 4;
+    var totalW = bw * s + gap * (s - 1);
+    cfg.cats.forEach(function(cat, i){
+      var x0 = m.l + band * i + (band - totalW) / 2;
+      cfg.series.forEach(function(se, j){
+        var v = se.values[i];
+        var x = x0 + j * (bw + gap);
+        var yTop = Y(Math.max(v, 0)), h = Math.abs(Y(v) - Y(0));
+        var r = E("rect", {x:x, y:yTop, width:bw, height:Math.max(h, 1), fill:se.color, rx:2, opacity:.92}, svg);
+        bindTip(r, se.name + " · " + cat + "：" + fmt(v) + " " + (cfg.unit || ""));
+        var ly = v >= 0 ? yTop - 4 : yTop + h + 11;
+        E("text", {x:x + bw/2, y:ly, "font-size":9.5, fill:"#5c554c", "text-anchor":"middle"}, svg).textContent = fmt(v);
+      });
+      E("text", {x:m.l + band*i + band/2, y:H-10, "font-size":10.5, fill:"#7c756b", "text-anchor":"middle"}, svg).textContent = cat;
+    });
+    document.getElementById(mountId).appendChild(svg);
+  }
+
+  /* 堆叠柱状图（正值） */
+  function stackChart(mountId, cfg){
+    var H = cfg.height || 300;
+    var m = {l:58, r:14, t:14, b:34};
+    var svg = E("svg", {viewBox:"0 0 "+W+" "+H, class:"chart", role:"img"});
+    var totals = cfg.cats.map(function(_, i){
+      return cfg.series.reduce(function(a, s){ return a + s.values[i]; }, 0);
+    });
+    var yMax = Math.max.apply(null, totals) * 1.1;
+    var pw = W - m.l - m.r, ph = H - m.t - m.b;
+    function Y(v){ return m.t + (1 - v / yMax) * ph; }
+    for (var t = 0; t <= yMax; t += yMax / 4){
+      E("line", {x1:m.l, x2:W-m.r, y1:Y(t), y2:Y(t), stroke:"#eee6da"}, svg);
+      E("text", {x:m.l-6, y:Y(t)+3.5, "font-size":10, fill:"#9a9184", "text-anchor":"end"}, svg).textContent = fmt(Math.round(t));
+    }
+    var n = cfg.cats.length;
+    var band = pw / n, bw = Math.min(band * 0.5, 60);
+    cfg.cats.forEach(function(cat, i){
+      var x = m.l + band * i + (band - bw) / 2;
+      var acc = 0;
+      cfg.series.forEach(function(se){
+        var v = se.values[i];
+        var yTop = Y(acc + v), h = Y(acc) - Y(acc + v);
+        var r = E("rect", {x:x, y:yTop, width:bw, height:Math.max(h, 0.5), fill:se.color, rx:0, opacity:.92}, svg);
+        bindTip(r, se.name + " · " + cat + "：" + fmt(v) + " " + (cfg.unit || "") + "（合计 " + fmt(totals[i]) + "）");
+        if (h > 16){
+          E("text", {x:x+bw/2, y:yTop + h/2 + 3.5, "font-size":9.5, fill:"#fff", "text-anchor":"middle"}, svg).textContent = fmt(v);
+        }
+        acc += v;
+      });
+      E("text", {x:x+bw/2, y:Y(acc) - 5, "font-size":9.5, fill:"#5c554c", "text-anchor":"middle", "font-weight":"bold"}, svg).textContent = fmt(acc);
+      E("text", {x:m.l + band*i + band/2, y:H-10, "font-size":10.5, fill:"#7c756b", "text-anchor":"middle"}, svg).textContent = cat;
+    });
+    document.getElementById(mountId).appendChild(svg);
+  }
+
+  /* 横向条形图（HTML） */
+  function hbar(mountId, rows, unit, color, maxOverride){
+    var host = document.getElementById(mountId);
+    var max = maxOverride || Math.max.apply(null, rows.map(function(r){ return r.v; }));
+    rows.forEach(function(r){
+      var row = document.createElement("div"); row.className = "hrow";
+      var lab = document.createElement("div"); lab.className = "hlab";
+      lab.innerHTML = r.l + (r.sub ? "<small>" + r.sub + "</small>" : "");
+      var tr = document.createElement("div"); tr.className = "htrack";
+      var fill = document.createElement("div"); fill.className = "hfill";
+      fill.style.width = Math.max(r.v / max * 100, 0.8) + "%";
+      fill.style.background = color || "var(--acc)";
+      if (r.c) fill.style.background = r.c;
+      tr.appendChild(fill);
+      var val = document.createElement("div"); val.className = "hval";
+      val.innerHTML = r.d != null ? r.d : fmt(r.v) + " <small>" + (unit || "") + "</small>";
+      row.appendChild(lab); row.appendChild(tr); row.appendChild(val);
+      row.addEventListener("mousemove", function(e){
+        tip.textContent = r.l + "：" + (r.tip || (fmt(r.v) + " " + (unit || "")));
+        tip.style.display = "block";
+        var x = e.clientX + 14; if (x + 250 > window.innerWidth) x = e.clientX - 264;
+        tip.style.left = x + "px"; tip.style.top = (e.clientY + 14) + "px";
+      });
+      row.addEventListener("mouseleave", function(){ tip.style.display = "none"; });
+      host.appendChild(row);
+    });
+  }
+
+  var P5 = ["FY2023", "FY2024", "FY2025", "6M 2025", "6M 2026"];
+
+  barChart("ch-rev", {
+    cats: P5, unit: "百万美元",
+    series: [
+      {name: "收入", color: "#b4532a", values: [41, 386, 4585, 1163, 16286]},
+      {name: "净亏损", color: "#9d3b32", values: [-1531, -8309, -41965, -12969, -80748]}
+    ],
+    yMin: -88000, yMax: 20000, height: 350
+  });
+
+  barChart("ch-aoi", {
+    cats: P5, unit: "百万美元",
+    series: [
+      {name: "经营亏损（GAAP）", color: "#8a8378", values: [-551, -2980, -8060, -2135, -693]},
+      {name: "调整后经营损益（非 GAAP）", color: "#2f7a5c", values: [-522, -2788, -4854, -1849, 1618]}
+    ],
+    yMin: -9500, yMax: 3500, height: 330
+  });
+
+  barChart("ch-q", {
+    cats: ["Q1'25", "Q2'25", "Q3'25", "Q4'25", "Q1'26", "Q2'26"], unit: "百万美元",
+    series: [
+      {name: "季度收入", color: "#b4532a", values: [376, 787, 1382, 2040, 4731, 11555]},
+      {name: "季度经营损益", color: "#8a8378", values: [-935, -1200, -3089, -2836, -1667, 974]}
+    ],
+    yMin: -4000, yMax: 13000, height: 330
+  });
+
+  barChart("ch-cpct", {
+    cats: P5, unit: "%",
+    series: [{name: "算力与基础设施费用 ÷ 收入", color: "#31567d", values: [1056, 653, 160, 201, 55]}],
+    yMin: 0, yMax: 1180, height: 300
+  });
+
+  stackChart("ch-mix", {
+    cats: ["FY2024", "FY2025", "6M 2026"], unit: "百万美元",
+    series: [
+      {name: "消费型", color: "#b4532a", values: [288, 3796, 13064]},
+      {name: "订阅型", color: "#31567d", values: [98, 789, 3222]}
+    ], height: 290
+  });
+
+  stackChart("ch-geo", {
+    cats: P5, unit: "百万美元",
+    series: [
+      {name: "美国", color: "#31567d", values: [34, 263, 3362, 820, 11763]},
+      {name: "国际", color: "#d08b4f", values: [7, 123, 1223, 343, 4523]}
+    ], height: 290
+  });
+
+  stackChart("ch-cash", {
+    cats: ["2024-12-31", "2025-12-31", "2026-06-30（未审计）"], unit: "百万美元",
+    series: [
+      {name: "现金及现金等价物", color: "#31567d", values: [3141, 17388, 112389]},
+      {name: "短期投资", color: "#7fa3c4", values: [0, 2889, 19262]}
+    ], height: 290
+  });
+
+  barChart("ch-commit", {
+    cats: ["2026", "2027", "2028", "2029", "2030", "此后"], unit: "百万美元",
+    series: [{name: "不可撤销采购承诺最低付款", color: "#8a6d3b", values: [7059, 11128, 10832, 8304, 5428, 11808]}],
+    yMin: 0, yMax: 13200, height: 300
+  });
+
+  /* 客户数：跨度大，用 sqrt 比例的 HTML 条 */
+  (function(){
+    var host = document.getElementById("ch-cust");
+    var rows = [
+      {l: "TTM 收入 ≥ $100,000", v: 11900, d: "&gt;11,900 家", note: "超过 11,900 家"},
+      {l: "TTM 收入 ≥ $1,000,000", v: 1900, d: "&gt;1,900 家", note: "超过 1,900 家"},
+      {l: "TTM 收入 ≥ $10,000,000", v: 250, d: "≈250 家", note: "约 250 家"}
+    ];
+    var max = Math.sqrt(11900);
+    rows.forEach(function(r){
+      var row = document.createElement("div"); row.className = "hrow";
+      var lab = document.createElement("div"); lab.className = "hlab"; lab.textContent = r.l;
+      var tr = document.createElement("div"); tr.className = "htrack";
+      var fill = document.createElement("div"); fill.className = "hfill";
+      fill.style.width = Math.max(Math.sqrt(r.v) / max * 100, 3) + "%";
+      fill.style.background = "#31567d";
+      tr.appendChild(fill);
+      var val = document.createElement("div"); val.className = "hval"; val.innerHTML = r.d;
+      row.appendChild(lab); row.appendChild(tr); row.appendChild(val);
+      row.addEventListener("mousemove", function(e){
+        tip.textContent = r.l + "：" + r.note + "（截至 2026-09-30，TTM 口径）";
+        tip.style.display = "block";
+        var x = e.clientX + 14; if (x + 250 > window.innerWidth) x = e.clientX - 264;
+        tip.style.left = x + "px"; tip.style.top = (e.clientY + 14) + "px";
+      });
+      row.addEventListener("mouseleave", function(){ tip.style.display = "none"; });
+      host.appendChild(row);
+    });
+    var note = document.createElement("p"); note.className = "note";
+    note.textContent = "条形长度按平方根比例绘制（数值跨度 250 → 11,900，线性比例不可读）。";
+    host.appendChild(note);
+  })();
+
+  /* 创始人持股（亿股） */
+  hbar("ch-founders", [
+    {l: "Dario Amodei", sub: "CEO · 含投票代理 4,621,120 股", v: 245259100, d: "2.45 亿股"},
+    {l: "Tom Brown", sub: "Chief Compute Officer", v: 244173040, d: "2.44 亿股"},
+    {l: "Christopher Olah", sub: "可解释性研究", v: 242882420, d: "2.43 亿股"},
+    {l: "Jared Kaplan", sub: "Chief Science Officer", v: 242351170, d: "2.42 亿股"},
+    {l: "Jack Clark", sub: "Anthropic Institute", v: 242271840, d: "2.42 亿股"},
+    {l: "Daniela Amodei", sub: "President · 董事会主席", v: 241408940, d: "2.41 亿股"},
+    {l: "Sam McCandlish", sub: "Chief Architect", v: 231809780, d: "2.32 亿股"}
+  ], "股", "#b4532a");
+
+  /* 融资轮（$B） */
+  hbar("ch-rounds", [
+    {l: "Series H（2026-05–06）", sub: "$589.0095/股 · H-1＋H-2", v: 65.2, d: "≈$65.2B"},
+    {l: "Series G（2026-01–05）", sub: "$259.1364/股 · G-1＋G-2", v: 45.2, d: "≈$45.2B"},
+    {l: "Series F-1（2025-08–09）", sub: "$140.9676/股", v: 13.0, d: "≈$13.0B"},
+    {l: "Series E-1（2025-01–03）", sub: "$56.0865/股", v: 3.6, d: "≈$3.6B"},
+    {l: "Series D（2024-01–05）", sub: "$30.0045/股", v: 1.2, d: "≈$1.2B"},
+    {l: "Series C（2023-03–06）", sub: "$11.2261/股", v: 0.45, d: "$0.45B"}
+  ], "$B", "#31567d");
+
+  /* 大型算力安排（$B） */
+  hbar("ch-deals", [
+    {l: "Broadcom 主设备租赁", sub: "5 年期 · 融资租赁 · 不含利息", v: 161.2, d: "≈161.2"},
+    {l: "SpaceXAI（原 X.AI）", sub: "NVIDIA GPU · 至 2029", v: 120.5, d: "≤120.5"},
+    {l: "Google", sub: "2026/04–2033/07 · true-up", v: 114.5, d: "≥114.5"},
+    {l: "Amazon", sub: "2026/05–2036/04 · true-up", v: 110.0, d: "≥110.0"},
+    {l: "Microsoft", sub: "2026/11–2033/05", v: 44.9, d: "≥44.9"},
+    {l: "Nscale", sub: "NVIDIA GPU · 至 2033", v: 44.6, d: "≤44.6"},
+    {l: "Lambda", sub: "NVIDIA GPU · 至 2034", v: 41.3, d: "≈41.3"},
+    {l: "AMD（如全额采购初始容量）", sub: "Helios/MI450 · 2027 起交付 · 未入承诺表", v: 20.0, d: "＞20.0（估）"}
+  ], "$B", "#8a6d3b");
+
+  /* ---------- nav scroll-spy ---------- */
+  var links = document.querySelectorAll("nav a");
+  var secs = [].map.call(links, function(a){ return document.querySelector(a.getAttribute("href")); });
+  function spy(){
+    var pos = window.scrollY + 90, idx = 0;
+    secs.forEach(function(s, i){ if (s && s.offsetTop <= pos) idx = i; });
+    links.forEach(function(a, i){ a.classList.toggle("on", i === idx); });
+  }
+  window.addEventListener("scroll", spy, {passive: true});
+  spy();
+})();
+</script>
+</body>
+</html>
