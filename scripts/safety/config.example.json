@@ -1,0 +1,13 @@
+{
+  "_comment": "safety-tracks 扫描器配置样例。实际配置 config.json 为本地文件（git 忽略），敏感关键词等清单不入库；克隆后参照本样例重建本地 config.json。字段均为正则片段。",
+  "restricted_paths": ["private/", "data/raw/"],
+  "restricted_path_exempt": ["private/README.md"],
+  "sensitive_keywords": [],
+  "sensitive_scan_prefixes": [],
+  "doc_exempt": [
+    "SECURITY.md", "README.md", "private/README.md",
+    "scripts/safety/scan.py", "scripts/safety/config.json",
+    "scripts/safety/config.example.json", "scripts/hooks/pre-commit"
+  ],
+  "extra_patterns": []
+}

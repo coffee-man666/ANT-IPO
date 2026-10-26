@@ -1,0 +1,12 @@
+#!/bin/bash
+# ANT-IPO pre-commit 安全门 —— 规则见 SECURITY.md
+# 入口：git config core.hooksPath scripts/hooks
+set -u
+cd "$(git rev-parse --show-toplevel)"
+
+if ! command -v python3 >/dev/null 2>&1; then
+  echo "[BLOCK] 缺少 python3，无法运行安全扫描（fail-closed）。参见 SECURITY.md"
+  exit 1
+fi
+
+exec python3 scripts/safety/scan.py --staged
